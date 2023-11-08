@@ -10,7 +10,14 @@ public class MuteButtonBehavior : MonoBehaviour
     [SerializeField] private String textWhileMuted = "Unmute";
     public void Start()
     {
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = textWhileUnmuted;
+        if (AudioListener.volume != 0)
+        {
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = textWhileUnmuted;
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<TextMeshProUGUI>().text = textWhileMuted;
+        }
     }
 
     public void SwitchText()
