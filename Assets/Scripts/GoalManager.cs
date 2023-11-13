@@ -7,15 +7,6 @@ using UnityEngine.UI;
 
 public class GoalManager : MonoBehaviour
 {
-    [Serializable]
-    public struct GoalInput
-    {
-        [SerializeField] public TileType goalType;
-        [SerializeField] public int goalNumber;
-    }
-
-    [SerializeField] private GoalInput[] goalInputs;
-
     [SerializeField] private Sprite yellowCubeSprite;
     [SerializeField] private Sprite redCubeSprite;
     [SerializeField] private Sprite blueCubeSprite;
@@ -30,18 +21,20 @@ public class GoalManager : MonoBehaviour
     private GoalTile[] goalTiles;
     private int[] xOffsetsForTwoGoals = new[] { -40, 40 };
     private int[] xOffsetsForThreeGoals = new[] { -60, 0, 60 };
+    private LevelRules levelRules; //Holds the levelRules of the scene, used to communicate with it
     
     void Start()
     {
-        int numberOfGoals = goalInputs.Length;
+        levelRules = GameObject.Find("/LevelRules").GetComponent<LevelRules>();
+        int numberOfGoals = levelRules.goalInputs.Length;
         goalTiles = new GoalTile[numberOfGoals];
 
         for (int i = 0; i < numberOfGoals; i++)
         {
             var spawnedGoalTile = Instantiate(goalTilePrefab, new Vector3(0, 0), Quaternion.identity);
             goalTiles[i] = spawnedGoalTile;
-            spawnedGoalTile.goalType = goalInputs[i].goalType;
-            spawnedGoalTile.goalNumber = goalInputs[i].goalNumber;
+            spawnedGoalTile.goalType = levelRules.goalInputs[i].goalType;
+            spawnedGoalTile.goalNumber = levelRules.goalInputs[i].goalNumber;
             spawnedGoalTile.transform.SetParent(gameObject.transform, true);
             spawnedGoalTile.GetComponent<RectTransform>().localScale = Vector3.one;
             spawnedGoalTile.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
@@ -56,10 +49,10 @@ public class GoalManager : MonoBehaviour
             
             spawnedGoalTile.GetComponent<RectTransform>().localPosition = new Vector3(xOffset, 0f);
 
-            spawnedGoalTile.GetComponentInChildren<TextMeshProUGUI>().text = goalInputs[i].goalNumber.ToString();
+            spawnedGoalTile.GetComponentInChildren<TextMeshProUGUI>().text = levelRules.goalInputs[i].goalNumber.ToString();
             
             
-            switch (goalInputs[i].goalType)
+            switch (levelRules.goalInputs[i].goalType)
             {
                 case TileType.Yellow:
                     spawnedGoalTile.GetComponentInChildren<Image>().sprite = yellowCubeSprite;

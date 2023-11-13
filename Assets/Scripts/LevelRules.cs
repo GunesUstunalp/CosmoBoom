@@ -6,6 +6,14 @@ using Random = UnityEngine.Random;
 
 public class LevelRules : MonoBehaviour
 {
+    [Serializable]
+    public struct GoalInput
+    {
+        [SerializeField] public TileType goalType;
+        [SerializeField] public int goalNumber;
+    }
+
+    [field: SerializeField] public GoalInput[] goalInputs { get; private set; }
     [field: SerializeField] public int moves { get; set; }
     [field: SerializeField] public int gridWidth { get; private set; }
     [field: SerializeField] public int gridHeight { get; private set; }

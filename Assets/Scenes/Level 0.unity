@@ -680,9 +680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c2f0173afdcf546a06de57a6368375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalInputs:
-  - goalType: 1
-    goalNumber: 6
   yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   blueCubeSprite: {fileID: -1888134951, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
@@ -1131,6 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85141f8bdee6354a84182189a1882df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <goalInputs>k__BackingField:
+  - goalType: 1
+    goalNumber: 10
   <moves>k__BackingField: 20
   <gridWidth>k__BackingField: 4
   <gridHeight>k__BackingField: 4
