@@ -26,4 +26,12 @@ public class MenuPopUpWindow : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void GoToNextLevel()
+    {
+        //TODO
+        // string subs = SceneManager.GetActiveScene().name.Split("")
+        //
+        // SceneManager.LoadScene()
+    }
 }
