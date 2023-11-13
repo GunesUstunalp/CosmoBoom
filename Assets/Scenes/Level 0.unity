@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 548916171}
   - component: {fileID: 548916176}
   m_Layer: 0
-  m_Name: Screen Canvas
+  m_Name: ScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,12 +681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalInputs:
-  - goalType: 6
-    goalNumber: 56
-  - goalType: 5
-    goalNumber: 14
-  - goalType: 4
-    goalNumber: 20
+  - goalType: 1
+    goalNumber: 6
   yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   blueCubeSprite: {fileID: -1888134951, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
@@ -1092,9 +1088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10fa360c600461e4d99d67e251ec0517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moves: 90
-  gridWidth: 9
-  gridHeight: 10
   tilePrefab: {fileID: 7524579256996449558, guid: 5b5259257c1cf934ba08bbd0df98783b, type: 3}
   balloonPoppingSound: {fileID: 8300000, guid: 1fe1efe2d0049164386cf7d02cc3fb65, type: 3}
   cubePoppingSound: {fileID: 8300000, guid: 859d8a050ee6083469915dcbd68b4f10, type: 3}
@@ -1109,20 +1102,60 @@ MonoBehaviour:
   balloonSprite: {fileID: 762868016, guid: 41ec360c07a384dfd9043313f76e0dd8, type: 3}
   rocketRightSprite: {fileID: -921708702, guid: 5d0ab64702ffb4538912888243b8c3a7, type: 3}
   rocketLeftSprite: {fileID: -136611992, guid: b16e5943aa4bc494a8019d2e4c7d6f65, type: 3}
-  canDuckFall: 0
-  canBalloonFall: 0
-  canRocketFall: 0
-  useCustomTileMap: 1
-  tileTypeMap:
-  - tilesInColumn: 07000000070000000700000007000000070000000700000007000000070000000700000007000000
-  - tilesInColumn: 04000000040000000300000003000000020000000200000001000000010000000000000000000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
-  - tilesInColumn: 05000000050000000600000006000000060000000600000006000000060000000600000006000000
+--- !u!1 &1147597187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147597189}
+  - component: {fileID: 1147597188}
+  m_Layer: 0
+  m_Name: LevelRules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1147597188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147597187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85141f8bdee6354a84182189a1882df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <moves>k__BackingField: 20
+  <gridWidth>k__BackingField: 4
+  <gridHeight>k__BackingField: 4
+  possibleTileTypesToFall: 0000000001000000
+  <useCustomTileMap>k__BackingField: 1
+  <tileTypeMap>k__BackingField:
+  - tilesInColumn: 08000000080000000800000008000000
+  - tilesInColumn: 00000000000000000000000001000000
+  - tilesInColumn: 00000000000000000000000001000000
+  - tilesInColumn: 00000000000000000000000001000000
+--- !u!4 &1147597189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147597187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1242315186
 GameObject:
   m_ObjectHideFlags: 0

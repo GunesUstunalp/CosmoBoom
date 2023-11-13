@@ -9,9 +9,6 @@ using Random = UnityEngine.Random;
 
 public class Grid : MonoBehaviour
 {
-    [SerializeField] private int moves;
-    [SerializeField] private int gridWidth, gridHeight;
-
     [SerializeField] private Tile tilePrefab;
 
     [SerializeField] private AudioClip balloonPoppingSound;
@@ -29,39 +26,42 @@ public class Grid : MonoBehaviour
     [SerializeField] private Sprite rocketRightSprite;
     [SerializeField] private Sprite rocketLeftSprite;
 
-    [SerializeField] private bool canDuckFall = false;
-    [SerializeField] private bool canBalloonFall = false;
-    [SerializeField] private bool canRocketFall = false;
-    [SerializeField] private bool useCustomTileMap = false;
-
-    [Serializable]
-    public struct TileTypeColumn
-    {
-        [SerializeField] public TileType[] tilesInColumn;
-    }
-    
-    [SerializeField] private TileTypeColumn[] tileTypeMap; //To be used to set the grid if useCustomTileMap option is used
-    
     private Tile[,] tileMap; //Used during runtime to determine game logic
     private GoalManager goalManager; //Holds the gameManager of the scene, used to communicate with it
+    private LevelRules levelRules; //Holds the levelRules of the scene, used to communicate with it
     private bool isAnimationPlaying = false; //true if rocket animation still playing, prevents tile clicking
+    private int gridWidth, gridHeight;
+    
+    private void Start()
+    {
+        goalManager = GameObject.Find("/ScreenCanvas/TopUICanvas/GoalPanel").GetComponent<GoalManager>();
+        levelRules = GameObject.Find("/LevelRules").GetComponent<LevelRules>();
+
+        gridWidth = levelRules.gridWidth;
+        gridHeight = levelRules.gridHeight;
+        
+        if (!levelRules.useCustomTileMap)
+        {
+            levelRules.GenerateRandomTileTypeMap();
+        }
+        
+        GenerateGrid();
+        UpdateMovesText();
+        CheckBottomRowForDucks(1); //if there are ducks present at the bottom row at the game's beginning
+    }
     
     private void GenerateGrid()
     {
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gridWidth * Tile.Width + 25, gridHeight * Tile.Width + 15); //To fit borders around grid
 
-        if (!useCustomTileMap)
-        {
-            GenerateRandomTileTypeMap();
-        }
-
         tileMap = new Tile[gridWidth, gridHeight];
 
+        Debug.Log(gridWidth + " " + gridHeight + " " + levelRules.gridWidth + " " + levelRules.gridHeight);
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                tileMap[x, y] = SpawnTile(x, y, tileTypeMap[x].tilesInColumn[y], FindLocalPosByGridPos(x, y));
+                tileMap[x, y] = SpawnTile(x, y, levelRules.tileTypeMap[x].tilesInColumn[y], FindLocalPosByGridPos(x, y));
             }
         }
     }
@@ -82,6 +82,9 @@ public class Grid : MonoBehaviour
         spawnedTile.positionInGrid = new Vector2(gridPosX, gridPosY);
 
         var particleSystem = spawnedTile.GetComponent<ParticleSystem>().main;
+
+        if (tileType == TileType.PossibleRandom)
+            tileType = levelRules.GetRandomPossibleTileType();
         
         switch (tileType)
         {
@@ -137,42 +140,15 @@ public class Grid : MonoBehaviour
 
         return spawnedTile;
     }
-
-    private void GenerateRandomTileTypeMap()
-    {
-        tileTypeMap = new TileTypeColumn[gridWidth];
-        for (int x = 0; x < gridWidth; x++)
-        {
-            tileTypeMap[x].tilesInColumn = new TileType[gridHeight];
-            for (int y = 0; y < gridHeight; y++)
-            {
-                tileTypeMap[x].tilesInColumn[y] = GetRandomTileType();
-            }
-        }
-    }
-
-    private TileType GetRandomTileType()
-    {
-        List<TileType> possibleTileTypes = new List<TileType>(){TileType.Yellow, TileType.Red, TileType.Blue, TileType.Green, TileType.Purple};
-        
-        if(canDuckFall)
-            possibleTileTypes.Add(TileType.Duck);
-        if(canBalloonFall)
-            possibleTileTypes.Add(TileType.Balloon);
-        if(canRocketFall)
-            possibleTileTypes.Add(TileType.Rocket);
-        
-        return possibleTileTypes[Random.Range(0, possibleTileTypes.Count)];
-    }
-
+    
     private void UpdateMovesText()
     {
-        gameObject.transform.parent.Find("TopUICanvas/MovesText").GetComponent<TextMeshProUGUI>().SetText(moves.ToString());
+        gameObject.transform.parent.Find("TopUICanvas/MovesText").GetComponent<TextMeshProUGUI>().SetText(levelRules.moves.ToString());
     }
 
     public void TileClicked(Tile tile)
     {
-        if (moves <= 0 || isAnimationPlaying)
+        if (levelRules.moves <= 0 || isAnimationPlaying)
             return;
         
         int x = (int)tile.positionInGrid.x;
@@ -215,7 +191,7 @@ public class Grid : MonoBehaviour
 
             UpdateGridAfterTileClick();
         }
-        moves--;
+        levelRules.moves--;
         UpdateMovesText();
     }
 
@@ -262,7 +238,7 @@ public class Grid : MonoBehaviour
             {
                 if (tileMap[x, y] == null)
                 {
-                    tileMap[x,y] = SpawnTile(x,y, GetRandomTileType(), FindLocalPosByGridPos(x,y - 10 - duckOffset));
+                    tileMap[x,y] = SpawnTile(x,y, levelRules.GetRandomPossibleTileType(), FindLocalPosByGridPos(x,y - 10 - duckOffset));
                     tileMap[x, y].MoveToPosition(FindLocalPosByGridPos(x,y));
                 }
             }
@@ -444,13 +420,5 @@ public class Grid : MonoBehaviour
             tileTemp.MoveToGoalPosition(transform.InverseTransformPoint(goalManager.GetPositionOfGoal(tile.tileType)), tile.tileType);
         }
         tile.Invoke("DestroyObject", 1);
-    }
-
-    private void Start()
-    {
-        goalManager = gameObject.transform.parent.Find("TopUICanvas").Find("GoalPanel").GetComponent<GoalManager>();
-        GenerateGrid();
-        UpdateMovesText();
-        CheckBottomRowForDucks(1); //if there are ducks present at the bottom row at the game's beginning
     }
 }

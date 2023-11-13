@@ -8,5 +8,6 @@
     Duck,
     Balloon,
     Rocket,
+    PossibleRandom,
     TemporaryAnimation
 }
