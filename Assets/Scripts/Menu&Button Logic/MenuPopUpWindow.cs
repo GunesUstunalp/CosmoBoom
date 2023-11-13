@@ -29,9 +29,9 @@ public class MenuPopUpWindow : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        //TODO
-        // string subs = SceneManager.GetActiveScene().name.Split("")
-        //
-        // SceneManager.LoadScene()
+        string currLevelNo = SceneManager.GetActiveScene().name.Replace("Level ", "");
+        int nextLevelNo = int.Parse(currLevelNo) + 1;
+
+        SceneManager.LoadScene("Level " + nextLevelNo);
     }
 }
