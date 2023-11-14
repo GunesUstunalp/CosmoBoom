@@ -22,12 +22,17 @@ public class GoalManager : MonoBehaviour
     private int[] xOffsetsForTwoGoals = new[] { -40, 40 };
     private int[] xOffsetsForThreeGoals = new[] { -60, 0, 60 };
     private LevelRules levelRules; //Holds the levelRules of the scene, used to communicate with it
+    private VictoryPopUpWindow victoryPopUpWindow; //Holds the victoryPopUpWindow of the scene, used to communicate with it
+    private TextMeshProUGUI movesText; //Holds the movesText on the TopUI, used to communicate with it
     
     void Start()
     {
         levelRules = GameObject.Find("/LevelRules").GetComponent<LevelRules>();
+        victoryPopUpWindow = GameObject.Find("/ScreenCanvas").transform.Find("VictoryPopUpWindow").GetComponent<VictoryPopUpWindow>();
+        movesText = GameObject.Find("MovesText").GetComponent<TextMeshProUGUI>();
         int numberOfGoals = levelRules.goalInputs.Length;
         goalTiles = new GoalTile[numberOfGoals];
+        UpdateMovesText();
 
         for (int i = 0; i < numberOfGoals; i++)
         {
@@ -118,5 +123,22 @@ public class GoalManager : MonoBehaviour
                 goalTiles[i].SubtractGoalNumberTextByOne();
             }
         }
+        CheckForWin();
+    }
+
+    public void CheckForWin()
+    {
+        foreach (GoalTile goalTile in goalTiles)
+        {
+            if (goalTile.goalNumber > 0)
+                return;
+        }
+        
+       victoryPopUpWindow.TriggerVictoryScreen(int.Parse(movesText.text));
+    }
+    
+    public void UpdateMovesText()
+    {
+        movesText.SetText(levelRules.moves.ToString());
     }
 }

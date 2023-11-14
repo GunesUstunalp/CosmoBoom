@@ -1074,13 +1074,14 @@ GameObject:
   - component: {fileID: 884134119}
   - component: {fileID: 884134118}
   - component: {fileID: 884134117}
+  - component: {fileID: 884134120}
   m_Layer: 0
-  m_Name: WinLosePopUpWindow
+  m_Name: VictoryPopUpWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &884134116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1155,6 +1156,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884134115}
   m_CullTransparentMesh: 1
+--- !u!114 &884134120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884134115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bfc645274ce46c0b06aa5a6351d006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &944263978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,8 +1644,8 @@ MonoBehaviour:
   <moves>k__BackingField: 20
   <gridWidth>k__BackingField: 4
   <gridHeight>k__BackingField: 4
-  possibleTileTypesToFall: 0000000001000000
-  <useCustomTileMap>k__BackingField: 1
+  possibleTileTypesToFall: 01000000
+  <useCustomTileMap>k__BackingField: 0
   <tileTypeMap>k__BackingField:
   - tilesInColumn: 08000000080000000800000008000000
   - tilesInColumn: 00000000000000000000000001000000

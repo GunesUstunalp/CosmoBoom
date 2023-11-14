@@ -46,7 +46,6 @@ public class Grid : MonoBehaviour
         }
         
         GenerateGrid();
-        UpdateMovesText();
         CheckBottomRowForDucks(1); //if there are ducks present at the bottom row at the game's beginning
     }
     
@@ -55,8 +54,7 @@ public class Grid : MonoBehaviour
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gridWidth * Tile.Width + 25, gridHeight * Tile.Width + 15); //To fit borders around grid
 
         tileMap = new Tile[gridWidth, gridHeight];
-
-        Debug.Log(gridWidth + " " + gridHeight + " " + levelRules.gridWidth + " " + levelRules.gridHeight);
+        
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
@@ -140,11 +138,6 @@ public class Grid : MonoBehaviour
 
         return spawnedTile;
     }
-    
-    private void UpdateMovesText()
-    {
-        gameObject.transform.parent.Find("TopUICanvas/MovesText").GetComponent<TextMeshProUGUI>().SetText(levelRules.moves.ToString());
-    }
 
     public void TileClicked(Tile tile)
     {
@@ -192,7 +185,7 @@ public class Grid : MonoBehaviour
             UpdateGridAfterTileClick();
         }
         levelRules.moves--;
-        UpdateMovesText();
+        goalManager.UpdateMovesText();
     }
 
     private void UpdateGridAfterTileClick()
