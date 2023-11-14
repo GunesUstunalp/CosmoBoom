@@ -2136,18 +2136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <goalInputs>k__BackingField:
-  - goalType: 1
-    goalNumber: 10
-  <moves>k__BackingField: 1
-  <gridWidth>k__BackingField: 4
-  <gridHeight>k__BackingField: 4
-  possibleTileTypesToFall: 01000000
+  - goalType: 6
+    goalNumber: 20
+  <moves>k__BackingField: 41
+  <gridWidth>k__BackingField: 8
+  <gridHeight>k__BackingField: 8
+  possibleTileTypesToFall: 010000000000000002000000030000000400000006000000
   <useCustomTileMap>k__BackingField: 0
-  <tileTypeMap>k__BackingField:
-  - tilesInColumn: 08000000080000000800000008000000
-  - tilesInColumn: 00000000000000000000000001000000
-  - tilesInColumn: 00000000000000000000000001000000
-  - tilesInColumn: 00000000000000000000000001000000
+  <tileTypeMap>k__BackingField: []
 --- !u!4 &1147597189
 Transform:
   m_ObjectHideFlags: 0
