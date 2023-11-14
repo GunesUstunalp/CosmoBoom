@@ -62,7 +62,7 @@ MonoBehaviour:
   yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   blueCubeSprite: {fileID: -1888134951, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  greenCubeSprite: {fileID: -962543572, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
+  greenCubeSprite: {fileID: -62696860, guid: 52f2fc4432ea84811a916fd38b631a6a, type: 3}
   purpleCubeSprite: {fileID: 913043931, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   duckSprite: {fileID: -944328329, guid: d7c7f33b52dc740e68426fd3cfaf6bb3, type: 3}
   balloonSprite: {fileID: 762868016, guid: 41ec360c07a384dfd9043313f76e0dd8, type: 3}
