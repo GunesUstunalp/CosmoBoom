@@ -186,6 +186,8 @@ public class Grid : MonoBehaviour
         }
         levelRules.moves--;
         goalManager.UpdateMovesText();
+        if(levelRules.moves < 1)
+            goalManager.CheckForDefeat();
     }
 
     private void UpdateGridAfterTileClick()

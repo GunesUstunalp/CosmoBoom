@@ -23,12 +23,14 @@ public class GoalManager : MonoBehaviour
     private int[] xOffsetsForThreeGoals = new[] { -60, 0, 60 };
     private LevelRules levelRules; //Holds the levelRules of the scene, used to communicate with it
     private VictoryPopUpWindow victoryPopUpWindow; //Holds the victoryPopUpWindow of the scene, used to communicate with it
+    private MenuPopUpWindow defeatPopUpWindow; //Holds the defeatPopUpWindow of the scene, used to communicate with it
     private TextMeshProUGUI movesText; //Holds the movesText on the TopUI, used to communicate with it
     
     void Start()
     {
         levelRules = GameObject.Find("/LevelRules").GetComponent<LevelRules>();
         victoryPopUpWindow = GameObject.Find("/ScreenCanvas").transform.Find("VictoryPopUpWindow").GetComponent<VictoryPopUpWindow>();
+        defeatPopUpWindow = GameObject.Find("/ScreenCanvas").transform.Find("DefeatPopUpWindow").GetComponent<MenuPopUpWindow>();
         movesText = GameObject.Find("MovesText").GetComponent<TextMeshProUGUI>();
         int numberOfGoals = levelRules.goalInputs.Length;
         goalTiles = new GoalTile[numberOfGoals];
@@ -126,15 +128,24 @@ public class GoalManager : MonoBehaviour
         CheckForWin();
     }
 
-    public void CheckForWin()
+    public bool CheckForWin()
     {
         foreach (GoalTile goalTile in goalTiles)
         {
             if (goalTile.goalNumber > 0)
-                return;
+                return false;
         }
         
        victoryPopUpWindow.TriggerVictoryScreen(int.Parse(movesText.text));
+       return true;
+    }
+
+    public void CheckForDefeat()
+    {
+        if (CheckForWin()) //if the player won with their last move
+            return;
+        
+        defeatPopUpWindow.SwitchActive();
     }
     
     public void UpdateMovesText()
