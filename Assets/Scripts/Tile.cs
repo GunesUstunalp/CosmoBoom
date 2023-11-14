@@ -13,7 +13,15 @@ public class Tile : MonoBehaviour
     private bool movingToGoalPos = false;
     private TileType goalPosType;
     private int speed = 900;
-    
+    private GoalManager goalManager; //Holds the gameManager of the scene, used to communicate with it
+    private AudioSource goalAudioSource; //Holds the audio source of the goalPanel, used to communicate with it
+
+    private void Start()
+    {
+        goalManager = GameObject.Find("/ScreenCanvas/TopUICanvas/GoalPanel").GetComponent<GoalManager>();
+        goalAudioSource = GameObject.Find("/ScreenCanvas/TopUICanvas/GoalPanel").GetComponent<AudioSource>();
+    }
+
     public void CheckEligibleToClick()
     {
         if (tileType != TileType.Balloon && tileType != TileType.Duck)
@@ -54,9 +62,7 @@ public class Tile : MonoBehaviour
             {
                 if (movingToGoalPos)
                 {
-                    var goalPanel = gameObject.transform.parent.parent.Find("TopUICanvas").Find("GoalPanel");
-                    var goalManager = goalPanel.GetComponent<GoalManager>();
-                    goalPanel.GetComponent<AudioSource>().Play(0); //plays the cube collect sound
+                    goalAudioSource.Play(0); //plays the cube collect sound
                     goalManager.SubtractGoalNumberByOne(goalPosType);
                     Destroy(gameObject);
                 }

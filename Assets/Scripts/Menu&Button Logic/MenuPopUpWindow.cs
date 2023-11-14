@@ -31,14 +31,6 @@ public class MenuPopUpWindow : MonoBehaviour
     {
         string currLevelNo = SceneManager.GetActiveScene().name.Replace("Level ", "");
         int nextLevelNo = int.Parse(currLevelNo) + 1;
-
-        if (SceneManager.GetSceneByName("Level " + nextLevelNo).IsValid())
-        {
-            SceneManager.LoadScene("Level " + nextLevelNo);
-        }
-        else
-        {
-            SceneManager.LoadScene("EndLevel");
-        }
+        SceneManager.LoadScene("Level " + nextLevelNo);
     }
 }
