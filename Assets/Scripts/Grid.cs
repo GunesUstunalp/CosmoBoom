@@ -90,43 +90,43 @@ public class Grid : MonoBehaviour
                 spawnedTile.GetComponent<Image>().sprite = yellowCubeSprite;
                 spawnedTile.tileType = TileType.Yellow;
                 particleSystem.startColor = Color.yellow;
-                spawnedTile.GetComponent<AudioSource>().clip = cubePoppingSound;
+                spawnedTile.PoppingSound = cubePoppingSound;
                 break;
             case TileType.Red:
                 spawnedTile.GetComponent<Image>().sprite = redCubeSprite;
                 spawnedTile.tileType = TileType.Red;
                 particleSystem.startColor = Color.red;
-                spawnedTile.GetComponent<AudioSource>().clip = cubePoppingSound;
+                spawnedTile.PoppingSound = cubePoppingSound;
                 break;
             case TileType.Blue:
                 spawnedTile.GetComponent<Image>().sprite = blueCubeSprite;
                 spawnedTile.tileType = TileType.Blue;
                 particleSystem.startColor = Color.blue;
-                spawnedTile.GetComponent<AudioSource>().clip = cubePoppingSound;
+                spawnedTile.PoppingSound = cubePoppingSound;
                 break;
             case TileType.Green:
                 spawnedTile.GetComponent<Image>().sprite = greenCubeSprite;
                 spawnedTile.tileType = TileType.Green;
                 particleSystem.startColor = Color.green;
-                spawnedTile.GetComponent<AudioSource>().clip = cubePoppingSound;
+                spawnedTile.PoppingSound = cubePoppingSound;
                 break;
             case TileType.Purple:
                 spawnedTile.GetComponent<Image>().sprite = purpleCubeSprite;
                 spawnedTile.tileType = TileType.Purple;
                 particleSystem.startColor = Color.magenta;
-                spawnedTile.GetComponent<AudioSource>().clip = cubePoppingSound;
+                spawnedTile.PoppingSound = cubePoppingSound;
                 break;
             case TileType.Duck:
                 spawnedTile.GetComponent<Image>().sprite = duckSprite;
                 spawnedTile.tileType = TileType.Duck;
                 particleSystem.startColor = Color.yellow;
-                spawnedTile.GetComponent<AudioSource>().clip = duckPoppingSound;
+                spawnedTile.PoppingSound = duckPoppingSound;
                 break;
             case TileType.Balloon:
                 spawnedTile.GetComponent<Image>().sprite = balloonSprite;
                 spawnedTile.tileType = TileType.Balloon;
                 particleSystem.startColor = Color.magenta;
-                spawnedTile.GetComponent<AudioSource>().clip = balloonPoppingSound;
+                spawnedTile.PoppingSound = balloonPoppingSound;
                 break;
             case TileType.Rocket:
                 spawnedTile.GetComponent<Image>().sprite = rocketRightSprite;
@@ -397,8 +397,9 @@ public class Grid : MonoBehaviour
     {
         if (tile == null && tile.gameObject == null)
             return;
-        
-        tile.GetComponent<AudioSource>().Play(0); //play popping sound
+
+        gameObject.GetComponent<AudioSource>().clip = tile.PoppingSound;
+        gameObject.GetComponent<AudioSource>().Play(0); //play popping sound
         tile.gameObject.GetComponent<ParticleSystem>().Play();
         tile.gameObject.GetComponent<Image>().enabled = false;
         tile.gameObject.GetComponent<Button>().enabled = false;

@@ -15,7 +15,8 @@ public class Tile : MonoBehaviour
     private int speed = 900;
     private GoalManager goalManager; //Holds the gameManager of the scene, used to communicate with it
     private AudioSource goalAudioSource; //Holds the audio source of the goalPanel, used to communicate with it
-
+    public AudioClip PoppingSound {get; set;} 
+    
     private void Start()
     {
         goalManager = GameObject.Find("/ScreenCanvas/TopUICanvas/GoalPanel").GetComponent<GoalManager>();
