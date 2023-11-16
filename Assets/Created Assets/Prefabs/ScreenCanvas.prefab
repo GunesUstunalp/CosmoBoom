@@ -504,7 +504,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 7524579256996449558, guid: 5b5259257c1cf934ba08bbd0df98783b, type: 3}
   balloonPoppingSound: {fileID: 8300000, guid: 1fe1efe2d0049164386cf7d02cc3fb65, type: 3}
   cubePoppingSound: {fileID: 8300000, guid: 859d8a050ee6083469915dcbd68b4f10, type: 3}
-  duckPoppingSound: {fileID: 8300000, guid: ec4790f5e19a0de4b9e4f02824e1520f, type: 3}
+  duckPoppingSound: {fileID: 8300000, guid: 1598bf21b3328214a94db53d3273a2d5, type: 3}
   cubeCollectingSound: {fileID: 8300000, guid: 65570f4214791aa4a8035c87ea15a91f, type: 3}
   yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
   redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
