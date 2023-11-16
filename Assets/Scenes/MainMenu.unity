@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -437,8 +437,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1888884052}
-        m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
+      - m_Target: {fileID: 430097476}
+        m_TargetAssemblyTypeName: MuteButtonBehavior, Assembly-CSharp
         m_MethodName: SwitchMute
         m_Mode: 1
         m_Arguments:
@@ -730,17 +730,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761749031}
-  m_LocalRotation: {x: -0, y: -0, z: 0.038112495, w: 0.9992735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 834469143}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.415, y: 49.982}
+  m_AnchoredPosition: {x: 0, y: 29}
   m_SizeDelta: {x: 462.21, y: 88.472}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761749033
@@ -1648,10 +1648,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1888884051}
   - component: {fileID: 1888884050}
-  - component: {fileID: 1888884052}
+  - component: {fileID: 1888884053}
   m_Layer: 0
   m_Name: BackgroundMusic
-  m_TagString: Untagged
+  m_TagString: GameMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1666,11 +1666,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3a3edaed101d89447b6ceaaf49b4282a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b951dcacbb75ff44a03ada32448bedf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1767,7 +1767,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1888884052
+--- !u!114 &1888884053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1776,7 +1776,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1888884049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8e10240ea65a7b49b009219dce0f5e8, type: 3}
+  m_Script: {fileID: 11500000, guid: eb29f2d932a648a44a12f1d07b8baa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2110516554
