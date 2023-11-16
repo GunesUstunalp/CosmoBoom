@@ -260,28 +260,28 @@ public class Grid : MonoBehaviour
         int y = (int)tile.positionInGrid.y;
         RocketTile.RocketOrientation orientation = tile.gameObject.GetComponent<RocketTile>().getRocketOrientation();
         
-        Tile RocketTemp1 = SpawnTile(x,y,TileType.TemporaryAnimation,FindLocalPosByGridPos(x,y));
-        Tile RocketTemp2 = SpawnTile(x,y,TileType.TemporaryAnimation,FindLocalPosByGridPos(x,y));
-        RocketTemp1.GetComponent<Image>().sprite = rocketRightSprite;
-        RocketTemp2.GetComponent<Image>().sprite = rocketLeftSprite;
-        RocketTemp1.SetSpeed(1500);
-        RocketTemp2.SetSpeed(1500);
+        Tile rocketTemp1 = SpawnTile(x,y,TileType.TemporaryAnimation,FindLocalPosByGridPos(x,y));
+        Tile rocketTemp2 = SpawnTile(x,y,TileType.TemporaryAnimation,FindLocalPosByGridPos(x,y));
+        rocketTemp1.GetComponent<Image>().sprite = rocketRightSprite;
+        rocketTemp2.GetComponent<Image>().sprite = rocketLeftSprite;
+        rocketTemp1.SetSpeed(1500);
+        rocketTemp2.SetSpeed(1500);
 
         if (orientation == RocketTile.RocketOrientation.LeftRight)
         {
-            RocketTemp1.MoveToPosition(FindLocalPosByGridPos(x + 100,y));
-            RocketTemp2.MoveToPosition(FindLocalPosByGridPos(x - 100,y));
+            rocketTemp1.MoveToPosition(FindLocalPosByGridPos(x + 100,y));
+            rocketTemp2.MoveToPosition(FindLocalPosByGridPos(x - 100,y));
         }
         else //if the orientation is UpDown
         {
-            RocketTemp1.transform.Rotate(Vector3.forward, 90);
-            RocketTemp2.transform.Rotate(Vector3.forward, 90);
-            RocketTemp1.MoveToPosition(FindLocalPosByGridPos(x ,y - 100));
-            RocketTemp2.MoveToPosition(FindLocalPosByGridPos(x,y + 100));
+            rocketTemp1.transform.Rotate(Vector3.forward, 90);
+            rocketTemp2.transform.Rotate(Vector3.forward, 90);
+            rocketTemp1.MoveToPosition(FindLocalPosByGridPos(x ,y - 100));
+            rocketTemp2.MoveToPosition(FindLocalPosByGridPos(x,y + 100));
         }
             
-        RocketTemp1.Invoke("DestroyObject", 1);
-        RocketTemp2.Invoke("DestroyObject", 1);
+        rocketTemp1.Invoke("DestroyObject", 1);
+        rocketTemp2.Invoke("DestroyObject", 1);
         isAnimationPlaying = true;
     }
     private void FindNeighboursOfRocketToPop(Tile tile, List<Tile> toBePopped)
