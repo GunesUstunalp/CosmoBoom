@@ -9,5 +9,6 @@
     Balloon,
     Rocket,
     PossibleRandom,
-    TemporaryAnimation
+    TemporaryAnimation,
+    Korkunc
 }

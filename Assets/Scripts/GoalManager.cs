@@ -15,6 +15,7 @@ public class GoalManager : MonoBehaviour
     [SerializeField] private Sprite duckSprite;
     [SerializeField] private Sprite balloonSprite;
     [SerializeField] private Sprite rocketRightSprite;
+    [SerializeField] private Sprite korkuncSprite;
 
     [SerializeField] private GoalTile goalTilePrefab;
 
@@ -59,33 +60,36 @@ public class GoalManager : MonoBehaviour
             spawnedGoalTile.GetComponentInChildren<TextMeshProUGUI>().text = levelRules.goalInputs[i].goalNumber.ToString();
             
             
-            // switch (levelRules.goalInputs[i].goalType)
-            // {
-            //     case TileType.Yellow:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = yellowCubeSprite;
-            //         break;
-            //     case TileType.Red:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = redCubeSprite;
-            //         break;
-            //     case TileType.Blue:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = blueCubeSprite;
-            //         break;
-            //     case TileType.Green:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = greenCubeSprite;
-            //         break;
-            //     case TileType.Purple:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = purpleCubeSprite;
-            //         break;
-            //     case TileType.Duck:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = duckSprite;
-            //         break;
-            //     case TileType.Balloon:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = balloonSprite;
-            //         break;
-            //     case TileType.Rocket:
-            //         spawnedGoalTile.GetComponentInChildren<Image>().sprite = rocketRightSprite;
-            //         break;
-            // }
+            switch (levelRules.goalInputs[i].goalType)
+            {
+                case TileType.Yellow:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = yellowCubeSprite;
+                    break;
+                case TileType.Red:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = redCubeSprite;
+                    break;
+                case TileType.Blue:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = blueCubeSprite;
+                    break;
+                case TileType.Green:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = greenCubeSprite;
+                    break;
+                case TileType.Purple:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = purpleCubeSprite;
+                    break;
+                case TileType.Duck:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = duckSprite;
+                    break;
+                case TileType.Balloon:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = balloonSprite;
+                    break;
+                case TileType.Rocket:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = rocketRightSprite;
+                    break;
+                case TileType.Korkunc:
+                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = korkuncSprite;
+                    break;
+            }
         }
     }
 
