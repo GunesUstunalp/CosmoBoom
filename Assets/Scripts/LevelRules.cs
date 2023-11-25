@@ -15,6 +15,7 @@ public class LevelRules : MonoBehaviour
 
     [field: SerializeField] public GoalInput[] goalInputs { get; private set; }
     [field: SerializeField] public int moves { get; set; }
+    [field: SerializeField] public int korkuncMoveZamani { get; set; }
     [field: SerializeField] public int gridWidth { get; private set; }
     [field: SerializeField] public int gridHeight { get; private set; }
     [field: SerializeField] private TileType[] possibleTileTypesToFall;

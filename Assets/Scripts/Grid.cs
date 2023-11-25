@@ -186,7 +186,7 @@ public class Grid : MonoBehaviour
         }
         levelRules.moves--;
         goalManager.UpdateMovesText();
-        if(levelRules.moves < 1)
+        if(levelRules.moves < 1 || levelRules.korkuncMoveZamani >= levelRules.moves)
             goalManager.CheckForDefeat();
     }
 
