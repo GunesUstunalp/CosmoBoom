@@ -1,13 +1,8 @@
 ﻿public enum TileType
 {
-    Yellow,
-    Red,
-    Blue,
-    Green,
-    Purple,
-    Duck,
-    Balloon,
-    Rocket,
+    ColorTile,
+    RocketTile,
+    BoxTile,
     PossibleRandom,
     TemporaryAnimation
 }

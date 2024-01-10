@@ -220,19 +220,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85141f8bdee6354a84182189a1882df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionAThreshold: 4
+  conditionBThreshold: 6
+  conditionCThreshold: 8
   <goalInputs>k__BackingField:
-  - goalType: 1
+  - goalType: 0
+    goalColorType: 1
     goalNumber: 10
   <moves>k__BackingField: 21
   <gridWidth>k__BackingField: 4
   <gridHeight>k__BackingField: 4
-  possibleTileTypesToFall: 01000000
+  possibleTileTypesToFall: 00000000
+  possibleColorTypesToFall: 01000000
   <useCustomTileMap>k__BackingField: 0
-  <tileTypeMap>k__BackingField:
-  - tilesInColumn: 08000000080000000800000008000000
-  - tilesInColumn: 00000000000000000000000001000000
-  - tilesInColumn: 00000000000000000000000001000000
-  - tilesInColumn: 00000000000000000000000001000000
+  <tilePrefabMap>k__BackingField: []
 --- !u!4 &1147597189
 Transform:
   m_ObjectHideFlags: 0

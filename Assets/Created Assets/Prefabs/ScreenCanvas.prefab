@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.28235295}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -360,20 +360,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10fa360c600461e4d99d67e251ec0517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 7524579256996449558, guid: 5b5259257c1cf934ba08bbd0df98783b, type: 3}
-  balloonPoppingSound: {fileID: 8300000, guid: 1fe1efe2d0049164386cf7d02cc3fb65, type: 3}
-  cubePoppingSound: {fileID: 8300000, guid: 859d8a050ee6083469915dcbd68b4f10, type: 3}
-  duckPoppingSound: {fileID: 8300000, guid: 1598bf21b3328214a94db53d3273a2d5, type: 3}
-  cubeCollectingSound: {fileID: 8300000, guid: 65570f4214791aa4a8035c87ea15a91f, type: 3}
-  yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  blueCubeSprite: {fileID: -1888134951, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  greenCubeSprite: {fileID: -62696860, guid: 52f2fc4432ea84811a916fd38b631a6a, type: 3}
-  purpleCubeSprite: {fileID: 913043931, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  duckSprite: {fileID: -944328329, guid: d7c7f33b52dc740e68426fd3cfaf6bb3, type: 3}
-  balloonSprite: {fileID: 762868016, guid: 41ec360c07a384dfd9043313f76e0dd8, type: 3}
-  rocketRightSprite: {fileID: -921708702, guid: 5d0ab64702ffb4538912888243b8c3a7, type: 3}
-  rocketLeftSprite: {fileID: -136611992, guid: b16e5943aa4bc494a8019d2e4c7d6f65, type: 3}
+  colorTileYellowPrefab: {fileID: 399221414935896032, guid: 5201ba8761d5f4841bb744d05120af5c, type: 3}
+  colorTileRedPrefab: {fileID: 399221414935896032, guid: 83d38ee7260935e4e8ec8fc3bb60e849, type: 3}
+  colorTileBluePrefab: {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  colorTileGreenPrefab: {fileID: 399221414935896032, guid: 6a46846dce85a6940a9917699f6e8520, type: 3}
+  colorTilePurplePrefab: {fileID: 399221414935896032, guid: af9554859a77d7043956b3176b1bb466, type: 3}
+  colorTilePinkPrefab: {fileID: 399221414935896032, guid: 138f457b16d15a649b501ea4f27f916d, type: 3}
+  rocketTilePrefab: {fileID: 399221414935896032, guid: 19b6d40c0472f6f42970e86abff0f208, type: 3}
+  boxTilePrefab: {fileID: 399221414935896032, guid: fe14aef990de7a04582ed30208433a06, type: 3}
+  gridWidth: 0
+  gridHeight: 0
 --- !u!82 &230453020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -770,14 +766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c2f0173afdcf546a06de57a6368375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yellowCubeSprite: {fileID: 1272787344, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  redCubeSprite: {fileID: -1992546894, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  blueCubeSprite: {fileID: -1888134951, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  greenCubeSprite: {fileID: -62696860, guid: 52f2fc4432ea84811a916fd38b631a6a, type: 3}
-  purpleCubeSprite: {fileID: 913043931, guid: 464c2116aa342468c89db6e039d953b2, type: 3}
-  duckSprite: {fileID: -944328329, guid: d7c7f33b52dc740e68426fd3cfaf6bb3, type: 3}
-  balloonSprite: {fileID: 762868016, guid: 41ec360c07a384dfd9043313f76e0dd8, type: 3}
-  rocketRightSprite: {fileID: -921708702, guid: 5d0ab64702ffb4538912888243b8c3a7, type: 3}
   goalTilePrefab: {fileID: 2889431487876743784, guid: ace07a8c89c6d4548bfc6d89f80b2733, type: 3}
 --- !u!82 &5010956548666189094
 AudioSource:

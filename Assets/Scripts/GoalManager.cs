@@ -7,15 +7,6 @@ using UnityEngine.UI;
 
 public class GoalManager : MonoBehaviour
 {
-    [SerializeField] private Sprite yellowCubeSprite;
-    [SerializeField] private Sprite redCubeSprite;
-    [SerializeField] private Sprite blueCubeSprite;
-    [SerializeField] private Sprite greenCubeSprite;
-    [SerializeField] private Sprite purpleCubeSprite;
-    [SerializeField] private Sprite duckSprite;
-    [SerializeField] private Sprite balloonSprite;
-    [SerializeField] private Sprite rocketRightSprite;
-
     [SerializeField] private GoalTile goalTilePrefab;
 
     private GoalTile[] goalTiles;
@@ -25,9 +16,11 @@ public class GoalManager : MonoBehaviour
     private VictoryPopUpWindow victoryPopUpWindow; //Holds the victoryPopUpWindow of the scene, used to communicate with it
     private MenuPopUpWindow defeatPopUpWindow; //Holds the defeatPopUpWindow of the scene, used to communicate with it
     private TextMeshProUGUI movesText; //Holds the movesText on the TopUI, used to communicate with it
+    private Grid grid; // Holds the grid of the scene, used to communicate with it
     
     void Start()
     {
+        grid = GameObject.Find("/ScreenCanvas/GridPanel").GetComponent<Grid>();
         levelRules = GameObject.Find("/LevelRules").GetComponent<LevelRules>();
         victoryPopUpWindow = GameObject.Find("/ScreenCanvas").transform.Find("VictoryPopUpWindow").GetComponent<VictoryPopUpWindow>();
         defeatPopUpWindow = GameObject.Find("/ScreenCanvas").transform.Find("DefeatPopUpWindow").GetComponent<MenuPopUpWindow>();
@@ -41,6 +34,7 @@ public class GoalManager : MonoBehaviour
             var spawnedGoalTile = Instantiate(goalTilePrefab, new Vector3(0, 0), Quaternion.identity);
             goalTiles[i] = spawnedGoalTile;
             spawnedGoalTile.goalType = levelRules.goalInputs[i].goalType;
+            spawnedGoalTile.goalColorType = levelRules.goalInputs[i].goalColorType;
             spawnedGoalTile.goalNumber = levelRules.goalInputs[i].goalNumber;
             spawnedGoalTile.transform.SetParent(gameObject.transform, true);
             spawnedGoalTile.GetComponent<RectTransform>().localScale = Vector3.one;
@@ -57,74 +51,44 @@ public class GoalManager : MonoBehaviour
             spawnedGoalTile.GetComponent<RectTransform>().localPosition = new Vector3(xOffset, 0f);
 
             spawnedGoalTile.GetComponentInChildren<TextMeshProUGUI>().text = levelRules.goalInputs[i].goalNumber.ToString();
-            
-            
-            switch (levelRules.goalInputs[i].goalType)
+
+            Sprite goalSprite;
+            if (spawnedGoalTile.goalType == TileType.ColorTile)
             {
-                case TileType.Yellow:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = yellowCubeSprite;
-                    break;
-                case TileType.Red:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = redCubeSprite;
-                    break;
-                case TileType.Blue:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = blueCubeSprite;
-                    break;
-                case TileType.Green:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = greenCubeSprite;
-                    break;
-                case TileType.Purple:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = purpleCubeSprite;
-                    break;
-                case TileType.Duck:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = duckSprite;
-                    break;
-                case TileType.Balloon:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = balloonSprite;
-                    break;
-                case TileType.Rocket:
-                    spawnedGoalTile.GetComponentInChildren<Image>().sprite = rocketRightSprite;
-                    break;
+                goalSprite = grid.ColorTilePrefabDict[spawnedGoalTile.goalColorType].GetComponent<Tile>().defaultSprite;
             }
+            else
+            {
+                goalSprite = grid.TilePrefabDict[spawnedGoalTile.goalType].GetComponent<Tile>().defaultSprite;
+            }
+            
+            spawnedGoalTile.GetComponentInChildren<Image>().sprite = goalSprite;
         }
     }
 
-    public bool IsTileGoal(TileType tileType)
+    public GoalTile GetGoalTileOfTile(Tile tile)
     {
         for (int i = 0; i < goalTiles.Length; i++)
         {
-            if (goalTiles[i].goalType == tileType && goalTiles[i].goalNumber > 0)
+            if (goalTiles[i].goalType == tile.tileType &&  goalTiles[i].goalNumber > 0)
             {
+                if (tile.tileType == TileType.ColorTile)
+                {
+                    if (((ColorTile)tile).colorType != goalTiles[i].goalColorType)
+                        continue;
+                }
+                
                 goalTiles[i].goalNumber--;
-                return true;
+                return goalTiles[i];
             }
         }
 
-        return false;
+        return null;
     }
 
-    public Vector3 GetPositionOfGoal(TileType tileType)
+    public void SubtractGoalNumberByOne(GoalTile goalTile)
     {
-        for (int i = 0; i < goalTiles.Length; i++)
-        {
-            if (goalTiles[i].goalType == tileType)
-            {
-                return goalTiles[i].transform.position;
-            }
-        }
-
-        return new Vector3(0,0,0);
-    }
-
-    public void SubtractGoalNumberByOne(TileType tileType)
-    {
-        for (int i = 0; i < goalTiles.Length; i++)
-        {
-            if (goalTiles[i].goalType == tileType)
-            {
-                goalTiles[i].SubtractGoalNumberTextByOne();
-            }
-        }
+        goalTile.SubtractGoalNumberTextByOne();
         CheckForWin();
     }
 
@@ -134,10 +98,10 @@ public class GoalManager : MonoBehaviour
         {
             if (goalTile.goalNumber > 0)
                 return false;
-        }
+        } 
         
-       victoryPopUpWindow.TriggerVictoryScreen(int.Parse(movesText.text));
-       return true;
+        victoryPopUpWindow.TriggerVictoryScreen(int.Parse(movesText.text)); 
+        return true;
     }
 
     public void CheckForDefeat()

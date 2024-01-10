@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5010956548590027286, guid: 14880078312e7446eae9e39eae80eaee, type: 3}
+      propertyPath: rocketTilePrefab
+      value: 
+      objectReference: {fileID: 399221414935896032, guid: 19b6d40c0472f6f42970e86abff0f208, type: 3}
     - target: {fileID: 5010956548993772720, guid: 14880078312e7446eae9e39eae80eaee, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -317,26 +321,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85141f8bdee6354a84182189a1882df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionAThreshold: 4
+  conditionBThreshold: 6
+  conditionCThreshold: 8
   <goalInputs>k__BackingField:
-  - goalType: 5
-    goalNumber: 14
-  - goalType: 6
-    goalNumber: 35
+  - goalType: 0
+    goalColorType: 0
+    goalNumber: 10
+  - goalType: 2
+    goalColorType: 0
+    goalNumber: 10
+  - goalType: 0
+    goalColorType: 2
+    goalNumber: 10
   <moves>k__BackingField: 101
-  <gridWidth>k__BackingField: 9
-  <gridHeight>k__BackingField: 9
-  possibleTileTypesToFall: 0100000000000000020000000300000004000000
-  <useCustomTileMap>k__BackingField: 1
-  <tileTypeMap>k__BackingField:
-  - tilesInColumn: 000000000100000002000000030000000400000000000000010000000200000003000000
-  - tilesInColumn: 000000000100000002000000030000000400000000000000010000000200000003000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
-  - tilesInColumn: 080000000800000005000000050000000600000006000000060000000600000006000000
+  <gridWidth>k__BackingField: 10
+  <gridHeight>k__BackingField: 10
+  possibleTileTypesToFall: 00000000
+  possibleColorTypesToFall: 000000000100000002000000030000000400000005000000
+  <useCustomTileMap>k__BackingField: 0
+  <tilePrefabMap>k__BackingField:
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
+  - tilesInColumn:
+    - {fileID: 399221414935896032, guid: ba6fa5be8a2a6d34f8c663e2f15e2d6e, type: 3}
 --- !u!4 &1147597189
 Transform:
   m_ObjectHideFlags: 0

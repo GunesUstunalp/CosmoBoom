@@ -9,6 +9,7 @@ public class GoalTile : MonoBehaviour
 {
     public static int Width = 50;
     [SerializeField] public TileType goalType;
+    [SerializeField] public ColorType goalColorType = 0;
     [SerializeField] public int goalNumber;
     private TextMeshProUGUI goalNumberText;
 

@@ -10,37 +10,35 @@ public class LevelRules : MonoBehaviour
     public struct GoalInput
     {
         [SerializeField] public TileType goalType;
+        [SerializeField] public ColorType goalColorType;
         [SerializeField] public int goalNumber;
     }
+
+    [SerializeField] public int conditionAThreshold = 4; //It is the number of tiles needed to create a rocket when popped
+    [SerializeField] public int conditionBThreshold = 6; //It is the number of tiles needed to create a bomb when popped
+    [SerializeField] public int conditionCThreshold = 8; //It is the number of tiles needed to create a disco ball when popped
 
     [field: SerializeField] public GoalInput[] goalInputs { get; private set; }
     [field: SerializeField] public int moves { get; set; }
     [field: SerializeField] public int gridWidth { get; private set; }
     [field: SerializeField] public int gridHeight { get; private set; }
     [field: SerializeField] private TileType[] possibleTileTypesToFall;
+    [field: SerializeField] private ColorType[] possibleColorTypesToFall;
     [field: SerializeField] public bool useCustomTileMap { get; private set; }
     [Serializable]
     public struct TileTypeColumn
     {
-        [SerializeField] public TileType[] tilesInColumn;
+        [SerializeField] public GameObject[] tilesInColumn;
     }
-    [field: SerializeField] public LevelRules.TileTypeColumn[] tileTypeMap { get; private set; } //To be used to set the grid if useCustomTileMap option is used
+    [field: SerializeField] public LevelRules.TileTypeColumn[] tilePrefabMap { get; private set; } //To be used to set the grid if useCustomTileMap option is used
 
     public TileType GetRandomPossibleTileType()
     {
         return possibleTileTypesToFall[Random.Range(0, possibleTileTypesToFall.Length)];
     }
     
-    public void GenerateRandomTileTypeMap()
+    public ColorType GetRandomPossibleColorType()
     {
-        tileTypeMap = new TileTypeColumn[gridWidth];
-        for (int x = 0; x < gridWidth; x++)
-        {
-            tileTypeMap[x].tilesInColumn = new TileType[gridHeight];
-            for (int y = 0; y < gridHeight; y++)
-            {
-                tileTypeMap[x].tilesInColumn[y] = GetRandomPossibleTileType();
-            }
-        }
+        return possibleColorTypesToFall[Random.Range(0, possibleColorTypesToFall.Length)];
     }
 }
